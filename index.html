@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PCM Advisory — Projects & Contracts Management Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8902A;
+    --gold-light: #D4AF5A;
+    --gold-pale: #f0d98a22;
+    --navy: #0D1B2A;
+    --navy-mid: #162436;
+    --navy-light: #1e3148;
+    --off-white: #F5F2EC;
+    --text-muted: #7A8A99;
+    --border: #2A3D52;
+    --border-light: #334d66;
+    --ff-display: 'Cormorant Garamond', serif;
+    --ff-body: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--navy);
+    color: var(--off-white);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--off-white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 0.5px solid var(--gold);
+    color: var(--gold);
+    padding: 0.5rem 1.3rem;
+    font-family: var(--ff-body);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── HERO ── */
+  #home {
+    padding: 7rem 3rem 6rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+    min-height: 90vh;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: var(--ff-display);
+    font-size: 4.2rem;
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--off-white);
+    margin-bottom: 1.8rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-body {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 440px;
+    margin-bottom: 2.8rem;
+    line-height: 1.85;
+  }
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.75rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost {
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--off-white); }
+  .hero-right { display: flex; flex-direction: column; gap: 1px; }
+  .stat-block {
+    padding: 1.8rem 2rem;
+    border: 0.5px solid var(--border);
+    background: var(--navy-mid);
+    transition: border-color 0.2s;
+  }
+  .stat-block:hover { border-color: var(--gold); }
+  .stat-number {
+    font-family: var(--ff-display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+  }
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+  .hero-quote {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 1.5rem 2rem;
+    border: 0.5px solid var(--gold);
+    background: var(--gold-pale);
+    line-height: 1.7;
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { border-bottom: 0.5px solid var(--border); }
+  .section-inner { padding: 5.5rem 3rem; }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--off-white);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── VALUES ── */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2rem;
+  }
+  .value-card {
+    background: var(--navy);
+    padding: 2.2rem;
+    transition: background 0.2s;
+  }
+  .value-card:hover { background: var(--navy-mid); }
+  .value-num {
+    font-family: var(--ff-display);
+    font-size: 2.2rem;
+    color: var(--border-light);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+  .value-title {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .value-body { color: var(--text-muted); font-size: 14px; line-height: 1.8; }
+
+  /* ── SERVICES ── */
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+  .services-body { color: var(--text-muted); line-height: 1.85; font-size: 15px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--navy);
+    padding: 2rem 1.8rem 1.8rem;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover { background: var(--navy-mid); }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.35s;
+  }
+  .service-card:hover::after { width: 100%; }
+  .svc-icon { font-size: 22px; color: var(--gold); margin-bottom: 1.1rem; display: block; }
+  .svc-title {
+    font-family: var(--ff-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--off-white);
+    margin-bottom: 0.6rem;
+  }
+  .svc-body { color: var(--text-muted); font-size: 13px; line-height: 1.78; }
+  .svc-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold);
+    padding: 3px 10px;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .service-card:hover .svc-tag { opacity: 1; }
+
+  /* ── TRAINING BAND ── */
+  .training-band {
+    background: var(--navy-mid);
+    padding: 3.5rem 3rem;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .training-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .training-title {
+    font-family: var(--ff-display);
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--off-white);
+    margin-bottom: 0.6rem;
+  }
+  .training-body { color: var(--text-muted); font-size: 14px; max-width: 560px; }
+
+  /* ── PARTNERS ── */
+  .partners-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: var(--border);
+  }
+  .partner {
+    background: var(--navy);
+    padding: 1.1rem 1.5rem;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    flex: 1;
+    min-width: 170px;
+    text-align: center;
+    transition: color 0.2s, background 0.2s;
+  }
+  .partner:hover { color: var(--off-white); background: var(--navy-mid); }
+
+  /* ── CONTACT ── */
+  #contact .section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 0;
+    border-top: 0.5px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .contact-detail:last-of-type { border-bottom: 0.5px solid var(--border); }
+  .contact-detail i { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+  .contact-detail a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .contact-detail a:hover { color: var(--gold); }
+
+  /* contact form */
+  .contact-form { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+  .form-field {
+    background: var(--navy-mid);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--border-light);
+    color: var(--off-white);
+    font-family: var(--ff-body);
+    font-size: 14px;
+    font-weight: 300;
+    padding: 6px 0;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    resize: none;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--gold); }
+  .form-field select option { background: var(--navy-mid); color: var(--off-white); }
+  .form-actions {
+    background: var(--navy-mid);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .form-note { font-size: 12px; color: var(--text-muted); }
+  .form-success {
+    display: none;
+    background: var(--navy-mid);
+    padding: 2rem 1.6rem;
+    text-align: center;
+  }
+  .form-success i { font-size: 32px; color: var(--gold); margin-bottom: 0.8rem; display: block; }
+  .form-success p { color: var(--text-muted); font-size: 14px; }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .wa-tooltip {
+    background: var(--navy-mid);
+    border: 0.5px solid var(--border-light);
+    color: var(--off-white);
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+  .wa-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: wa-pulse 2.5s ease-in-out infinite;
+  }
+  .wa-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+    animation: none;
+  }
+  .wa-btn svg { width: 28px; height: 28px; fill: white; }
+  @keyframes wa-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+    50% { box-shadow: 0 4px 28px rgba(37,211,102,0.6); }
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    padding: 7rem 3rem;
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .cta-title {
+    font-family: var(--ff-display);
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: var(--off-white);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .cta-divider { width: 48px; height: 1px; background: var(--gold); margin: 1.5rem auto 2rem; }
+  .cta-sub { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 15px; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.2rem 3rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 1.8rem; list-style: none; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--border-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text-muted); }
+  .footer-copy { font-size: 12px; color: var(--border-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #home {
+      grid-template-columns: 1fr;
+      padding: 4rem 1.5rem;
+      min-height: auto;
+      gap: 3rem;
+    }
+    .hero-title { font-size: 2.8rem; }
+    .section-inner { padding: 3.5rem 1.5rem; }
+    .values-grid { grid-template-columns: 1fr; }
+    .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    #contact .section-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .training-band { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.2rem; }
+    .section-title { font-size: 2rem; }
+    .cta-title { font-size: 2.2rem; }
+    .stats-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     WHATSAPP FLOATING BUTTON
+═══════════════════════════════════════════ -->
+<div class="wa-float">
+  <div class="wa-tooltip">Chat with us on WhatsApp</div>
+  <a class="wa-btn"
+     href="https://wa.me/966560748473?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20PCM%20Advisory%20services."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat with PCM Advisory on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16 1C7.716 1 1 7.716 1 16c0 2.628.675 5.145 1.953 7.361L1 31l7.825-1.925A14.953 14.953 0 0016 31c8.284 0 15-6.716 15-15S24.284 1 16 1zm0 27.25a12.19 12.19 0 01-6.212-1.7l-.445-.264-4.641 1.142 1.182-4.508-.29-.462A12.192 12.192 0 013.75 16C3.75 9.234 9.234 3.75 16 3.75S28.25 9.234 28.25 16 22.766 28.25 16 28.25zm6.698-9.143c-.367-.184-2.17-1.07-2.505-1.192-.337-.121-.582-.184-.827.184-.244.366-.948 1.192-1.162 1.436-.214.244-.428.275-.795.091-.367-.183-1.549-.571-2.95-1.82-1.09-.972-1.826-2.172-2.04-2.539-.214-.367-.022-.565.16-.747.165-.165.367-.428.55-.642.184-.214.245-.367.367-.611.122-.245.061-.459-.03-.642-.092-.184-.827-1.993-1.133-2.728-.299-.716-.603-.619-.827-.63l-.703-.012c-.245 0-.642.091-.978.459-.336.367-1.284 1.254-1.284 3.057s1.315 3.546 1.498 3.79c.184.245 2.586 3.95 6.268 5.54.876.378 1.56.604 2.093.773.879.28 1.68.24 2.312.146.705-.105 2.17-.887 2.476-1.743.305-.856.305-1.59.214-1.743-.091-.153-.336-.245-.703-.428z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════ -->
+<nav>
+  <a href="#home" class="nav-logo">PCM <span>Advisory</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="home">
+  <div>
+    <div class="hero-eyebrow">Projects &amp; Contracts Management</div>
+    <h1 class="hero-title">Your trusted partner in <em>contract excellence</em></h1>
+    <p class="hero-body">We help organizations navigate the full lifecycle of their construction projects and contracts — with clarity, care, and a commitment to outcomes that last.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-ghost">
+        <i class="ti ti-arrow-right" aria-hidden="true"></i>
+        Get in touch
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-row">
+      <div class="stat-block">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Core service areas</div>
+      </div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">MENA</div>
+      <div class="stat-label">Egypt &nbsp;·&nbsp; KSA &nbsp;·&nbsp; UAE &amp; beyond</div>
+    </div>
+    <div class="hero-quote">
+      "We do our best work when we treat every client's challenge as if it were our own."
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT / VALUES
+═══════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">Who we are</div>
+    <h2 class="section-title">Built on three principles</h2>
+    <p style="color:var(--text-muted);max-width:680px;margin-bottom:3rem;line-height:1.85">
+      PCM Advisory is a specialist consultancy firm dedicated to Projects and Contracts Management. We work alongside businesses and organizations to bring structure, confidence, and clarity to complex engagements — whether you are delivering a large infrastructure programme, managing a portfolio of contracts, or navigating a challenging dispute.
+    </p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div class="value-title">Clarity</div>
+        <div class="value-body">We cut through complexity and communicate in plain language — so you always know where things stand and what comes next.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div class="value-title">Partnership</div>
+        <div class="value-body">We work with you, not just for you. Your goals become our goals, and we invest in understanding what success truly looks like for your organisation.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div class="value-title">Integrity</div>
+        <div class="value-body">We give honest advice, even when it's difficult. Our reputation rests on trust, and we protect that with every engagement we take on.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro">
+      <div>
+        <div class="section-eyebrow">Core services</div>
+        <h2 class="section-title">Solutions to high-stakes problems</h2>
+      </div>
+      <div class="services-body">
+        From the first line of a tender document to the resolution of a complex dispute, we provide specialist advisory across every stage of the contract and project lifecycle — protecting your interests and advancing your outcomes. We support both clients and contractors across Egypt, KSA, and the wider MENA region.
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="ti ti-file-certificate svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Contracts Management</div>
+        <div class="svc-body">Drafting, review, and full administration for both clients and contractors. Bespoke contractual architecture covering FIDIC, NEC, and JCT suites tailored to local civil codes — governing the complete project lifecycle.</div>
+        <div class="svc-tag">Pre &amp; Post Contract</div>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-shield-check svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Claims Management</div>
+        <div class="svc-body">Forensic delay analysis, quantum analysis for cost claims, claim preparation, submission, and defense. Strategic recovery for contractors and strategic defense for employers — built on precision and precedent.</div>
+        <div class="svc-tag">EOT &amp; Cost Claims</div>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-calendar-stats svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Project Planning &amp; Control</div>
+        <div class="svc-body">CPM scheduling, baseline development, delay analysis using Impacted As-Planned and Time Impact Analysis methods. Progress audits and cash-flow preparation — integrating the schedule with the law.</div>
+        <div class="svc-tag">Scheduling &amp; Delay</div>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-alert-triangle svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Risk Management</div>
+        <div class="svc-body">Qualitative and quantitative risk assessment, risk registers, and mitigation strategies. Scenario modelling and contingency planning tailored to the geopolitical and supply-chain complexities of the MENA region.</div>
+        <div class="svc-tag">Risk &amp; Mitigation</div>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-gavel svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Dispute Management</div>
+        <div class="svc-body">Written submissions and representation in DB, DAB, and DRB proceedings. Full support for arbitration including counsel attendance, expert witness statements, and claim consultancy for both parties.</div>
+        <div class="svc-tag">Arbitration &amp; DAB</div>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-package svc-icon" aria-hidden="true"></i>
+        <div class="svc-title">Procurement Strategy</div>
+        <div class="svc-body">Tender documentation preparation, evaluation, and award advice. Procurement approaches aligned with applicable guidelines, regulatory compliance, RFP preparation, and supply chain management.</div>
+        <div class="svc-tag">Pre-Contract</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TRAINING BAND
+═══════════════════════════════════════════ -->
+<div class="training-band" id="training">
+  <div>
+    <div class="training-eyebrow">From practice to pedagogy</div>
+    <div class="training-title">FIDIC Contracts &amp; Construction Claims Training</div>
+    <p class="training-body">We offer tailor-made training sessions on FIDIC contracts and construction claims — designed for teams in Egypt, KSA, and the wider MENA region. Our trainers don't just know the theory; they have applied it on live projects and in real disputes.</p>
+  </div>
+  <a href="#contact" class="btn-primary" style="white-space:nowrap;flex-shrink:0">Enquire About Training</a>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PARTNERS
+═══════════════════════════════════════════ -->
+<section id="partners">
+  <div class="section-inner">
+    <div class="section-eyebrow">Our network</div>
+    <h2 class="section-title">Business partners</h2>
+    <p style="color:var(--text-muted);max-width:540px;margin-bottom:2.5rem;font-size:14px;line-height:1.85">
+      We work alongside a trusted network of partners across Egypt, KSA, and the UAE — enabling us to deliver integrated solutions across every phase of your project.
+    </p>
+    <div class="partners-list">
+      <div class="partner">Al Tholathea for Construction &amp; Contracting</div>
+      <div class="partner">Nefertari Trading Company</div>
+      <div class="partner">Zamil Structural Steel</div>
+      <div class="partner">Synvetnto UAE &amp; Egypt</div>
+      <div class="partner">Seif Group</div>
+      <div class="partner">EGEC</div>
+      <div class="partner">UBTEC Construction</div>
+      <div class="partner">Provision Consultancy (PMO)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2 class="section-title">Let's start a conversation</h2>
+      <p>Tell us about your next challenge — whether it's a claim, a contract, a dispute, or a project you need to get right. We'd love to explore how we can help.</p>
+      <div class="contact-detail">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+        <a href="https://wa.me/966560748473?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20PCM%20Advisory%20services." target="_blank" rel="noopener">+966 560 748 473 (WhatsApp)</a>
+      </div>
+      <div class="contact-detail">
+        <i class="ti ti-map-pin" aria-hidden="true"></i>
+        <span>Egypt &nbsp;·&nbsp; KSA &nbsp;·&nbsp; UAE</span>
+      </div>
+      <div class="contact-detail">
+        <i class="ti ti-world" aria-hidden="true"></i>
+        <span>Serving the MENA region &amp; beyond</span>
+      </div>
+      <p style="margin-top:2rem;font-size:13px;">
+        Prefer to chat instantly?<br/>
+        <a href="https://wa.me/966560748473?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20PCM%20Advisory%20services."
+           target="_blank" rel="noopener"
+           style="color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:8px;">
+          <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+          Message us directly on WhatsApp
+        </a>
+      </p>
+    </div>
+
+    <div>
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" name="fname" required placeholder="Ahmed"/>
+          </div>
+          <div class="form-field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="lname" required placeholder="Al-Rashidi"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required placeholder="ahmed@company.com"/>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+966 5x xxx xxxx"/>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="company">Company &amp; role</label>
+          <input type="text" id="company" name="company" placeholder="Contracting firm, Developer, etc."/>
+        </div>
+        <div class="form-field full">
+          <label for="service">Area of interest</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Select a service area…</option>
+            <option>Contracts Management</option>
+            <option>Claims Management</option>
+            <option>Project Planning &amp; Control</option>
+            <option>Risk Management</option>
+            <option>Dispute Management</option>
+            <option>Procurement Strategy</option>
+            <option>FIDIC Training</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="message">Tell us about your project or challenge</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Briefly describe your project, the challenge you are facing, or what you would like to discuss…"></textarea>
+        </div>
+        <div class="form-actions">
+          <span class="form-note">We typically respond within one business day.</span>
+          <button type="submit" class="btn-primary">Send Enquiry</button>
+        </div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <i class="ti ti-circle-check" aria-hidden="true"></i>
+        <p style="font-family:var(--ff-display);font-size:1.4rem;color:var(--off-white);margin-bottom:0.5rem">Thank you for reaching out</p>
+        <p>We have received your message and will be in touch shortly. In the meantime, feel free to message us directly on WhatsApp.</p>
+        <a href="https://wa.me/966560748473" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:1.5rem">
+          Open WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════ -->
+<div class="cta-section">
+  <div class="cta-eyebrow">Ready to begin?</div>
+  <h2 class="cta-title">Let's build something<br/>we can all be proud of</h2>
+  <div class="cta-divider"></div>
+  <p class="cta-sub">Every project has its pressures. Every contract has its complexities.<br/>That's exactly why we're here.</p>
+  <div class="cta-actions">
+    <a href="#contact" class="btn-primary">Start a Conversation</a>
+    <a href="https://wa.me/966560748473?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20PCM%20Advisory%20services."
+       target="_blank" rel="noopener"
+       class="btn-ghost">
+      <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <a href="#home" class="footer-logo">PCM <span>Advisory</span></a>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="footer-copy">&copy; 2026 PCM Advisory — Projects &amp; Contracts Management Consulting</span>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+
+  // Smooth highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + entry.target.id
+            ? 'var(--gold)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
